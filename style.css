@@ -10,14 +10,8 @@
 }
 
 @keyframes subtleBob {
-    0%, 100% { transform: translateY(0); }
+    0%, 100% { atransform: translateY(0); }
     50% { transform: translateY(-3px); }
-}
-
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
 }
 
 /* Basic Setup */
@@ -28,7 +22,8 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    /* Updated Font Stack: Prioritize Segoe UI, add fallbacks */
+    font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     background-color: #FEFDF6; /* Slightly lighter base background */
     color: #78350F; /* Brown text */
     /* Subtle diagonal lines pattern with fixed attachment */
@@ -55,7 +50,7 @@ body {
     border-bottom: 1px solid #FDE68A; /* Slightly darker yellow border */
     text-align: center;
     position: relative;
-    overflow: hidden; /* Important for parallax containment */
+    /* overflow: hidden; Keep overflow visible for debugging */
     /* Animation - applied via JS now */
     opacity: 0; /* Start hidden for JS animation */
     transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth transition for JS */
@@ -68,100 +63,96 @@ body {
 }
 
 
-/* Content Box Styling */
+/* Content Box Styling - Simplified */
 .slide-content {
      max-width: 800px;
      width: 100%;
      z-index: 10;
      position: relative;
-     padding: 2.5rem; /* Increased padding */
-     /* Animated Gradient Top Border */
-     border-top: 4px solid transparent; /* Make solid border transparent */
-     background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 253, 248, 0.75)), /* Main background gradient */
-                       linear-gradient(90deg, #FBBF24, #F59E0B, #D97706, #FBBF24); /* Border gradient */
-     background-origin: border-box; /* Apply border gradient to border area */
-     background-clip: padding-box, border-box; /* Clip main bg to padding, border bg to border */
-     background-size: 200% 100%; /* For gradient animation */
-     animation: gradientShift 6s ease infinite; /* Apply gradient animation */
-
-     border-radius: 0.75rem; /* More rounded corners */
-     box-shadow: 0 6px 12px rgba(146, 64, 14, 0.1); /* Softer, slightly larger shadow */
-     backdrop-filter: blur(3px); /* Slightly increased blur */
+     padding: 2.5rem;
+     /* Simple solid border */
+     border-top: 4px solid #FBBF24; /* Amber-400 solid border */
+     background-color: rgba(255, 255, 255, 0.8); /* Slightly less opaque simple background */
+     border-radius: 0.75rem;
+     box-shadow: 0 6px 12px rgba(146, 64, 14, 0.1);
 }
 /* Override for title slide content box */
 #slide-1 .slide-content {
-     padding-top: 2.5rem; /* Keep padding consistent */
-     border-top: none; /* Remove border */
+     padding-top: 2.5rem;
+     border-top: none;
      box-shadow: none;
-     background: transparent; /* Fully transparent */
-     backdrop-filter: none;
-     background-image: none; /* Remove gradients */
-     animation: none; /* Remove animation */
+     background: transparent;
 }
 
 /* Typography */
 .slide h1 {
-    font-size: 2.75rem; /* Slightly larger */
+    font-size: 2.75rem;
     font-weight: 700;
     color: #D97706; /* Orange heading */
     margin-bottom: 1.5rem;
     margin-top: 0;
-    /* Subtle Text Shadow */
     text-shadow: 1px 1px 3px rgba(120, 53, 15, 0.15);
 }
  .slide h2 {
-    font-size: 1.9rem; /* Slightly larger */
+    font-size: 1.9rem;
     font-weight: 700;
     color: #B45309; /* Darker orange sub-heading */
     margin-bottom: 1.5rem;
-    margin-top: 2.5rem; /* More space above */
-    border-bottom: 2px solid #FCD34D; /* Slightly thicker underline accent */
+    margin-top: 2.5rem;
+    border-bottom: 2px solid #FCD34D;
     padding-bottom: 0.5rem;
-    display: inline-block; /* Keep underline tight */
+    display: inline-block;
 }
 .slide p {
     font-size: 1.1rem;
-    line-height: 1.7; /* Increased line height */
+    line-height: 1.7;
     margin-bottom: 1rem;
     text-align: left;
+    color: #78350F; /* Ensure default text color */
 }
-#slide-1 p.intro-text { /* Center intro text only */
+#slide-1 p.intro-text {
     text-align: center;
 }
  .slide strong {
      color: #92400E;
-     font-weight: 700; /* Ensure strong is bold */
+     font-weight: 700;
  }
 
 /* List Styling */
 .slide ul, .slide ol {
     list-style: none;
-    padding: 1.5rem; /* More padding */
+    padding: 1.5rem;
     text-align: left;
     margin-top: 1.5rem;
-    background-color: rgba(254, 253, 250, 0.85); /* Slightly more opaque list bg */
-    border-radius: 0.5rem; /* Match content box rounding */
+    background-color: rgba(254, 253, 250, 0.9); /* Slightly more opaque list bg */
+    border-radius: 0.5rem;
     border: 1px solid #FEF3C7;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); /* Subtle inner shadow */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
 }
 .slide li {
-    margin-bottom: 1rem; /* More spacing */
+    margin-bottom: 1rem;
     font-size: 1.1rem;
     line-height: 1.6;
-    padding-left: 1.75rem; /* More indent */
+    padding-left: 1.75rem;
     position: relative;
+    color: #78350F; /* Explicitly set list item color */
     /* Add subtle hover effect */
-    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out; /* Add transform */
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out, opacity 0.5s ease-out; /* Add opacity transition */
      /* Animation - applied via JS now */
     opacity: 0; /* Start hidden */
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-    transform: translateX(-15px); /* Initial state */
+    transform: translateX(-15px); /* Initial state for animation */
 }
-/* Staggering handled by JS */
+
+/* Define the visible state for list items */
+.slide li.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
 
 .slide li:hover {
-     color: #B45309; /* Darken text slightly on hover */
-     transform: translateX(3px); /* Slight nudge on hover */
+     color: #B45309;
+     transform: translateX(3px) !important; /* Ensure hover nudge overrides animation transform */
 }
 
  /* List bullet style */
@@ -170,16 +161,16 @@ body {
     position: absolute;
     left: 0;
     top: 0.5em;
-    width: 0.6em; /* Slightly larger bullet */
+    width: 0.6em;
     height: 0.6em;
     background-color: #F59E0B;
     border-radius: 50%;
     transform: translateY(-50%);
-    box-shadow: 0 0 4px rgba(245, 158, 11, 0.6); /* Brighter glow */
+    box-shadow: 0 0 4px rgba(245, 158, 11, 0.6);
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 .slide li:hover::before {
-    transform: translateY(-50%) scale(1.3); /* Enlarge bullet more */
+    transform: translateY(-50%) scale(1.3);
     box-shadow: 0 0 6px rgba(245, 158, 11, 0.8);
 }
 /* Ordered list numbers */
@@ -196,81 +187,80 @@ body {
      border: none;
      padding-top: 0.5rem;
      padding-bottom: 0;
-     margin-left: 0.5rem; /* Indent nested lists */
-     box-shadow: none; /* Remove inner shadow */
-     list-style: disc; /* Use standard disc for nested */
-     padding-left: 1.5rem; /* Adjust padding for standard bullets */
+     margin-left: 0.5rem;
+     box-shadow: none;
+     list-style: disc;
+     padding-left: 1.5rem;
 }
 .slide ul.nested-list li::before {
-    content: none; /* Remove custom bullet for nested */
+    content: none;
 }
 
 
 /* Image & SVG Styles */
-/* Banner Image Style */
+/* Banner Image Style - Increased Size */
 .title-banner-image {
-     width: 100%; /* Take full width of container */
-     max-width: 600px; /* Max width */
-     height: auto; /* Maintain aspect ratio */
-     max-height: 150px; /* Limit height */
-     margin: 0 auto 1.5rem auto; /* Center horizontally, add bottom margin */
-     display: block; /* Ensure margin auto works */
-     border-radius: 0.75rem; /* Match content box */
-     object-fit: cover; /* Cover the area, might crop */
-     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Add shadow */
+     width: 100%;
+     max-width: 700px;
+     height: auto;
+     max-height: 200px;
+     margin: 0 auto 2rem auto;
+     display: block;
+     border-radius: 0.75rem;
+     object-fit: cover;
+     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
-/* Corner Image Style */
+/* Corner Image Style - Increased Size */
 .corner-image {
     position: absolute;
-    width: 60px; /* Fixed size */
-    height: 60px; /* Fixed size */
-    z-index: 5;
-    object-fit: contain; /* Use contain to avoid cropping 1:1 images */
+    width: 100px; /* Increased size */
+    height: 100px; /* Increased size */
+    z-index: 5; /* Keep below buttons (z-index 20) */
+    object-fit: contain;
     border-radius: 8px;
-    opacity: 0.7; /* Make them slightly transparent */
-    filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.1)); /* Add drop shadow */
-    animation: subtleBob 4s ease-in-out infinite alternate; /* Apply bob animation */
-    transition: transform 0.3s ease-out; /* Smooth transition for parallax */
+    opacity: 0.7;
+    filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.1));
+    animation: subtleBob 4s ease-in-out infinite alternate;
+    transition: transform 0.3s ease-out;
 }
-/* Corner Placements */
-.top-left-image { top: 2rem; left: 2rem; animation-delay: 0.5s; }
-.top-right-image { top: 2rem; right: 2rem; animation-delay: 1s; }
-.bottom-left-image { bottom: 2rem; left: 2rem; animation-delay: 1.5s; }
-.bottom-right-image { bottom: 2rem; right: 2rem; animation-delay: 2s; }
+/* Corner Placements - Adjusted for larger size & to avoid buttons */
+.top-left-image { top: 3.5rem; left: 3.5rem; animation-delay: 0.5s; }
+.top-right-image { top: 3.5rem; right: 3.5rem; animation-delay: 1s; }
+.bottom-left-image { bottom: 6rem; left: 3.5rem; animation-delay: 1.5s; } /* Increased bottom offset */
+.bottom-right-image { bottom: 6rem; right: 3.5rem; animation-delay: 2s; } /* Increased bottom offset */
 
 
 /* Button Styles */
 .nav-button {
      position: fixed;
-     bottom: 25px; /* Slightly higher */
-     background: linear-gradient(145deg, #FBBF24, #F59E0B); /* Gradient background */
-     color: #422006; /* Dark brown text for contrast */
-     padding: 12px 24px; /* Larger padding */
+     bottom: 25px;
+     background: linear-gradient(145deg, #FBBF24, #F59E0B);
+     color: #422006;
+     padding: 12px 24px;
      border: none;
      border-radius: 9999px;
      cursor: pointer;
-     font-weight: 700; /* Bolder */
-     box-shadow: 0 5px 10px rgba(217, 119, 6, 0.3), inset 0 -2px 3px rgba(0,0,0,0.1); /* Add inner bottom shadow */
-     transition: all 0.3s ease; /* Smooth all transitions */
-     z-index: 20;
-     text-transform: uppercase; /* Uppercase text */
-     letter-spacing: 0.5px; /* Slight spacing */
-     outline: none; /* Remove default focus outline */
+     font-weight: 700;
+     box-shadow: 0 5px 10px rgba(217, 119, 6, 0.3), inset 0 -2px 3px rgba(0,0,0,0.1);
+     transition: all 0.3s ease;
+     z-index: 20; /* Ensure buttons are above images */
+     text-transform: uppercase;
+     letter-spacing: 0.5px;
+     outline: none;
 }
 .nav-button:hover {
-    background: linear-gradient(145deg, #FCD34D, #FBBF24); /* Lighter gradient */
+    background: linear-gradient(145deg, #FCD34D, #FBBF24);
     box-shadow: 0 7px 14px rgba(217, 119, 6, 0.4), inset 0 -1px 2px rgba(0,0,0,0.05);
-    transform: translateY(-3px); /* More lift */
+    transform: translateY(-3px);
 }
 .nav-button:active {
-     transform: translateY(-1px); /* Press down effect */
+     transform: translateY(-1px);
      box-shadow: 0 3px 6px rgba(217, 119, 6, 0.3), inset 0 -1px 2px rgba(0,0,0,0.1);
 }
-/* Add a subtle focus style for accessibility */
 .nav-button:focus-visible {
-    box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.5); /* Yellow glow */
+    box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.5);
 }
 
-.prev-button { left: 25px; } /* Slightly more inset */
+.prev-button { left: 25px; }
 .next-button { right: 25px; }
 #slide-1 .prev-button, #slide-9 .next-button { display: none; }
